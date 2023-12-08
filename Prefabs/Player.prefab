@@ -1,0 +1,67 @@
+{
+    "Base": {
+        "name": "Player",
+        "tag": "Player"
+    },
+    "BoxCollider2D": {
+        "isTrigger": false,
+        "offset": {
+            "x": -0.05000000074505806,
+            "y": 0.10000000149011612
+        },
+        "size": {
+            "x": 0.25,
+            "y": 0.25
+        }
+    },
+    "CircleCollider2D": {
+        "isTrigger": false,
+        "offset": {
+            "x": -0.05000000074505806,
+            "y": -0.05000000074505806
+        },
+        "radius": 0.125
+    },
+    "GroundDetection": {
+        "groundTag": "Platform"
+    },
+    "ID": 17076308337505437698,
+    "NativeScript": {
+        "className": ""
+    },
+    "Rigidbody2D": {
+        "fixedRotation": true,
+        "gravityScale": 1.0,
+        "type": 1
+    },
+    "SpriteRenderer": {
+        "color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+        ],
+        "shape": 0,
+        "sprite": {
+            "imageID": 7922241668003063654,
+            "index": 50
+        }
+    },
+    "Transform": {
+        "position": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "rotation": [
+            0.0,
+            0.0,
+            0.0
+        ],
+        "scale": [
+            2.5,
+            2.5,
+            2.5
+        ]
+    }
+}
