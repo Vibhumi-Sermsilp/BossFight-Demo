@@ -15,8 +15,7 @@
                 ],
                 "shape": 0,
                 "sprite": {
-                    "imageID": 3493431450606226534,
-                    "index": 0
+                    "imageID": 0
                 }
             },
             "Transform": {
@@ -2238,10 +2237,13 @@
                 "far": 1000.0,
                 "near": 0.0,
                 "projection": 1,
-                "size": 3.0,
+                "size": 3.5,
                 "targetID": 2503585634683617343
             },
             "ID": 4045176983250244255,
+            "NativeScript": {
+                "className": "PlayerCamera"
+            },
             "Transform": {
                 "position": [
                     0.0,
@@ -2268,21 +2270,13 @@
             "BoxCollider2D": {
                 "isTrigger": false,
                 "offset": {
-                    "x": -0.05000000074505806,
-                    "y": 0.10000000149011612
+                    "x": 0.0,
+                    "y": -0.03500000014901161
                 },
                 "size": {
-                    "x": 0.25,
-                    "y": 0.25
+                    "x": 0.20000000298023224,
+                    "y": 0.2750000059604645
                 }
-            },
-            "CircleCollider2D": {
-                "isTrigger": false,
-                "offset": {
-                    "x": -0.05000000074505806,
-                    "y": -0.05000000074505806
-                },
-                "radius": 0.125
             },
             "GroundDetection": {
                 "groundTag": "Platform"
@@ -2293,8 +2287,11 @@
             },
             "Rigidbody2D": {
                 "fixedRotation": true,
-                "gravityScale": 1.0,
+                "gravityScale": 1.2000000476837158,
                 "type": 1
+            },
+            "SpriteAnimator": {
+                "controllerID": 5568631641090470786
             },
             "SpriteRenderer": {
                 "color": [
@@ -2305,14 +2302,14 @@
                 ],
                 "shape": 0,
                 "sprite": {
-                    "imageID": 7922241668003063654,
+                    "imageID": 11244381477808532646,
                     "index": 50
                 }
             },
             "Transform": {
                 "position": [
-                    0.0,
-                    0.0,
+                    0.6287257671356201,
+                    -0.218960702419281,
                     0.0
                 ],
                 "rotation": [
@@ -2321,9 +2318,9 @@
                     0.0
                 ],
                 "scale": [
-                    2.5,
-                    2.5,
-                    2.5
+                    3.200000047683716,
+                    3.200000047683716,
+                    1.0
                 ]
             }
         }

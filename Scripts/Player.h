@@ -71,16 +71,7 @@ public:
 
 		if (m_app->GetInput().GetKeyDown(Key::A))
 		{
-			CircleCollision2D* collision = new CircleCollision2D();
-
-			collision->name = "circle";
-			collision->tag = 3;
-			collision->x = m_transform->position.x + (m_transform->scale.x > 0 ? 0.5f : -0.5f);
-			collision->y = m_transform->position.y;
-			collision->radius = 1.0f;
-			collision->lifetime = 1.5f;
-
-			SpawnCollision2D(collision);
+			m_animator->controller->SetTrigger("attack");
 		}
 
 		if (m_app->GetInput().GetKey(Key::Left))
@@ -99,7 +90,7 @@ public:
 		}
 
 		if (m_animator && m_animator->controller)
-			m_animator->controller->SetBool("walking", horizontal != 0);
+			m_animator->controller->SetBool("running", horizontal != 0);
 
 		if (Rigidbody2DComponent* rb2d = GetComponent<Rigidbody2DComponent>())
 		{

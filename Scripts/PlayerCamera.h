@@ -35,6 +35,7 @@ public:
 		{
 			TransformComponent* targetTransform = m_camera->targetEntity.GetComponent<TransformComponent>();
 			m_transform->position.x = targetTransform->position.x;
+			m_transform->position.y = targetTransform->position.y;
 		}
 	}
 };
