@@ -5,17 +5,13 @@
 #include "Scripts/Player.h"
 #include "Scripts/Enemy.h"
 #include "Scripts/PlayerCamera.h"
-//#include "Scripts/PlayerMovement.h"
-//#include "Scripts/MenuSystem.h"
-//#include "Scripts/PlayerHitbox.h"
+#include "Scripts/PlayerHitbox.h"
 
 extern "C" {
     API_CLASS void RegisterClasses() {
         REGISTER_CLASS(Player)
-        //REGISTER_CLASS(PlayerMovement)
         REGISTER_CLASS(PlayerCamera)
         REGISTER_CLASS(Enemy)
-        //REGISTER_CLASS(MenuSystem)
-        //REGISTER_CLASS(PlayerHitbox)
+        REGISTER_CLASS(PlayerHitbox)
     }
 }

@@ -15,121 +15,150 @@
 #include "Components/GroundDetectionComponent.h"
 #include "Components/AudioSourceComponent.h"
 
-class PlayerMovement
-{
-
-};
-
 class Player : public ScriptableEntity
 {
 private:
+	Rigidbody2DComponent* m_rigidbody2d = nullptr;
 	TransformComponent* m_transform = nullptr;
-	SpriteAnimatorComponent* m_animator = nullptr;
 	GroundDetectionComponent* m_groundDetection = nullptr;
+	SpriteAnimatorComponent* m_animator = nullptr;
 	AudioSourceComponent* m_audioSource = nullptr;
 
+	/* Movement */
+	glm::vec2 velocity = { 0.0f, 0.0f };
 	int horizontal = 0;
-	float moveSpeed = 4.5f;
-	float jumpPower = 4.5f;
+	float moveSpeed = 3.5f;
+	float movementSmoothing = 0.05f;
+	bool airControl = true;
+	float airControlMultiplier = 0.9f;
 
+	/* Jump */
+	bool isGrounded;
+	bool jump = false;
+	float jumpForce = 4.5f;
+	int maxBonusJump = 1;
+	int currentBonusJump;
+
+	/* Attack */
+	Entity hitboxPrefab;
+
+	/* Audio */
 	AudioClip* jumpSound = nullptr;
 
 public:
 	EXPORT_CLASS(Player)
+
 	virtual void Start() override
 	{
 		std::cout << "Player Start()\n";
 
+		m_rigidbody2d = GetComponent<Rigidbody2DComponent>();
 		m_transform = GetComponent<TransformComponent>();
-		m_animator = GetComponent<SpriteAnimatorComponent>();
 		m_groundDetection = GetComponent<GroundDetectionComponent>();
+		m_animator = GetComponent<SpriteAnimatorComponent>();
 		m_audioSource = GetComponent<AudioSourceComponent>();
 
-		/*
-		if (Asset* asset = m_app->GetAsset("C:\\BossFight Projects\\bison\\Assets\\bonus_sound.wav", false))
-		{
-			std::cout << "Found Jump Sound\n";
-			jumpSound = ((AudioAsset*)asset)->GetAudioClip();
-		}
-		else
-		{
-			std::cout << "Not Found Jump Sound\n";
-		}
-		*/
-		
+		hitboxPrefab = m_app->GetPrefabByName("PlayerHitbox");
 	}
 
+	virtual void Update(float dt) override
+	{
+		/*--Handle Ground Check--*/
+		bool wasGrounded = isGrounded;
+		isGrounded = false;
+
+		if (m_groundDetection->numGrounds > 0)
+		{
+			isGrounded = true;
+			currentBonusJump = maxBonusJump;
+		}
+		/*-----------------------*/
+
+		/*-----Handle Input-----*/
+		horizontal = 0;
+		if (m_app->GetInput().GetKey(Key::A))
+		{
+			horizontal = -1;
+		}
+		if (m_app->GetInput().GetKey(Key::D))
+		{
+			horizontal = 1;
+		}
+		if (m_app->GetInput().GetKeyDown(Key::Space))
+		{
+			jump = true;
+			std::cout << "Jump Bonus Left: " << currentBonusJump;
+		}
+
+		if (m_app->GetInput().GetKeyDown(Key::X) && hitboxPrefab.IsValid())
+		{
+			int direction = m_transform->scale.x > 0 ? 1 : -1;
+			glm::vec3 offset = { direction * 1.0f, 0.0f, 0.0f };
+			m_scene->InstantiateEntity(hitboxPrefab, m_transform->position + offset);
+		}
+		/*----------------------*/
+	}
+
+	virtual void LateUpdate(float dt) override
+	{
+		Move(horizontal * moveSpeed, jump);
+		jump = false;
+	}
+
+	void Move(float move, bool jump)
+	{
+		if (!isGrounded && airControl)
+		{
+			move *= airControlMultiplier;
+		}
+
+		if (isGrounded || airControl)
+		{
+			glm::vec2 targetVelocity{ move, m_rigidbody2d->GetVerticalY() };
+			m_rigidbody2d->SetVelocity(move, m_rigidbody2d->GetVerticalY());
+
+			if (move > 0 && m_transform->scale.x < 0)
+			{
+				Flip();
+			}
+			else if (move < 0 && m_transform->scale.x > 0)
+			{
+				Flip();
+			}
+		}
+
+		if ((isGrounded || currentBonusJump > 0) && jump)
+		{
+			if (!isGrounded)
+			{
+				m_rigidbody2d->SetVelocity(m_rigidbody2d->GetVelocityX(), 0);
+				currentBonusJump--;
+			}
+
+			isGrounded = false;
+			m_rigidbody2d->ApplyImpulse(0.1f, jumpForce);
+		}
+	}
 
 	void Flip()
 	{
 		m_transform->scale.x *= -1;
 	}
 
-	virtual void Update(float dt) override
+	void Foo()
 	{
-		horizontal = 0;
+		std::cout << "Player::Foo() !!!\n";
+		Flip();
+	}
 
-		if (m_app->GetInput().GetKeyDown(Key::A))
-		{
-			CircleCollision2D* collision = new CircleCollision2D();
-
-			collision->name = "circle";
-			collision->tag = 3;
-			collision->x = m_transform->position.x + (m_transform->scale.x > 0 ? 0.5f : -0.5f);
-			collision->y = m_transform->position.y;
-			collision->radius = 1.0f;
-			collision->lifetime = 1.5f;
-
-			SpawnCollision2D(collision);
-		}
-
-		if (m_app->GetInput().GetKey(Key::Left))
-		{
-			horizontal = -1;
-
-			if (m_transform->scale.x > 0)
-				Flip();
-		}
-
-		if (m_app->GetInput().GetKey(Key::Right))
-		{
-			horizontal = 1;
-			if (m_transform->scale.x < 0)
-				Flip();
-		}
-
-		if (m_animator && m_animator->controller)
-			m_animator->controller->SetBool("walking", horizontal != 0);
-
-		if (Rigidbody2DComponent* rb2d = GetComponent<Rigidbody2DComponent>())
-		{
-			rb2d->SetVelocity(horizontal * moveSpeed, rb2d->GetVerticalY());
-		}
-
-		if (m_app->GetInput().GetKeyDown(Key::Space) && m_groundDetection->numGrounds > 0)
-		{
-			std::cout << "Player Jump!!!\n";
-
-			if (m_audioSource)
-				m_audioSource->Play(jumpSound);
-			//m_app->GetAudio().PlaySound();
-			
-			if (Rigidbody2DComponent* rb2d = GetComponent<Rigidbody2DComponent>())
-			{
-				rb2d->ApplyImpulse(0, jumpPower);
-			}
-		}
+	virtual void ExportFunctions() override
+	{
+		EXPORT_FUNCTION(Player::Foo);
 	}
 
 	virtual void OnCollisionEnter(Collision2D collision)
 	{
 		std::cout << "Player OnCollisionEnter: " << collision.name << std::endl;
-
-		if (collision.name == "Door")
-		{
-			std::cout << "\n\nENTER THE DOOR\n\n";
-			m_app->ChangeScene("Level2");
-		}
 	}
 
 	virtual void OnCollisionExit(Collision2D collision)

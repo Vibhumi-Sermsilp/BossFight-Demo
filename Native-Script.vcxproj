@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scripts\Enemy.h" />
+    <ClInclude Include="Scripts\PlayerHitbox.h" />
     <ClInclude Include="Scripts\Player.h" />
     <ClInclude Include="Scripts\PlayerCamera.h" />
   </ItemGroup>
