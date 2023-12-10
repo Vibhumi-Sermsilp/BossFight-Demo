@@ -1,17 +1,89 @@
 {
   "ID": 18364765700134802392,
   "defaultState": "Idle",
-  "parameters": [],
+  "parameters": [
+    {
+      "defaultValue": false,
+      "name": "running",
+      "type": 2
+    },
+    {
+      "defaultValue": 0,
+      "name": "attack",
+      "type": 3
+    }
+  ],
   "states": [
     {
       "motion": 15915386654688518241,
       "name": "Idle",
       "position": [
-        0.0,
-        132.0
+        130.4351043701172,
+        132.05075073242188
+      ],
+      "speed": 0.11999999731779099
+    },
+    {
+      "motion": 77730527159626976,
+      "name": "Attack",
+      "position": [
+        143.81195068359375,
+        254.06785583496094
+      ],
+      "speed": 0.07500000298023224
+    },
+    {
+      "motion": 16714381138177123139,
+      "name": "Run",
+      "position": [
+        139.11297607421875,
+        -13.844963073730469
       ],
       "speed": 0.07500000298023224
     }
   ],
-  "transitions": []
+  "transitions": [
+    {
+      "conditions": [
+        {
+          "mode": 0,
+          "parameter": "attack",
+          "threshold": 0
+        }
+      ],
+      "fromState": "Idle",
+      "hasExitTime": false,
+      "nextState": "Attack"
+    },
+    {
+      "conditions": [
+        {
+          "mode": 0,
+          "parameter": "running",
+          "threshold": true
+        }
+      ],
+      "fromState": "Idle",
+      "hasExitTime": false,
+      "nextState": "Run"
+    },
+    {
+      "conditions": [],
+      "fromState": "Attack",
+      "hasExitTime": true,
+      "nextState": "Idle"
+    },
+    {
+      "conditions": [
+        {
+          "mode": 1,
+          "parameter": "running",
+          "threshold": false
+        }
+      ],
+      "fromState": "Run",
+      "hasExitTime": false,
+      "nextState": "Idle"
+    }
+  ]
 }

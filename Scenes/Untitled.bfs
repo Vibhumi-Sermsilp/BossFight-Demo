@@ -2,73 +2,27 @@
     "entities": [
         {
             "Base": {
-                "name": "PlayerHitbox",
-                "tag": "PlayerHitbox"
+                "name": "Dummy Enemy",
+                "tag": "Enemy"
             },
             "BoxCollider2D": {
-                "isTrigger": true,
+                "isTrigger": false,
                 "offset": {
                     "x": 0.0,
                     "y": 0.0
                 },
                 "size": {
-                    "x": 0.699999988079071,
-                    "y": 0.699999988079071
+                    "x": 0.800000011920929,
+                    "y": 0.6000000238418579
                 }
             },
-            "ID": 5253830766051810167,
+            "ID": 3713346032075912380,
             "NativeScript": {
-                "className": "PlayerHitbox"
-            },
-            "Rigidbody2D": {
-                "fixedRotation": false,
-                "gravityScale": 1.0,
-                "type": 1
-            },
-            "Transform": {
-                "position": [
-                    6.045428276062012,
-                    1.8101131916046143,
-                    0.0
-                ],
-                "rotation": [
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                "scale": [
-                    1.0,
-                    1.0,
-                    1.0
-                ]
-            }
-        },
-        {
-            "Base": {
-                "name": "Player",
-                "tag": "Player"
-            },
-            "BoxCollider2D": {
-                "isTrigger": false,
-                "offset": {
-                    "x": -0.05000000074505806,
-                    "y": 0.0
-                },
-                "size": {
-                    "x": 0.15000000596046448,
-                    "y": 0.3499999940395355
-                }
-            },
-            "GroundDetection": {
-                "groundTag": "Platform"
-            },
-            "ID": 2503585634683617343,
-            "NativeScript": {
-                "className": "Player"
+                "className": "Enemy"
             },
             "Rigidbody2D": {
                 "fixedRotation": true,
-                "gravityScale": 4.0,
+                "gravityScale": 1.0,
                 "type": 1
             },
             "SpriteRenderer": {
@@ -80,14 +34,132 @@
                 ],
                 "shape": 0,
                 "sprite": {
-                    "imageID": 13793725432235505591,
+                    "imageID": 11868734758166899774,
                     "index": 0
                 }
             },
             "Transform": {
                 "position": [
+                    19.64098358154297,
+                    5.154790878295898,
+                    0.0
+                ],
+                "rotation": [
                     0.0,
                     0.0,
+                    0.0
+                ],
+                "scale": [
+                    2.0,
+                    2.0,
+                    2.0
+                ]
+            }
+        },
+        {
+            "Base": {
+                "name": "Dummy Enemy",
+                "tag": "Enemy"
+            },
+            "BoxCollider2D": {
+                "isTrigger": false,
+                "offset": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "size": {
+                    "x": 0.800000011920929,
+                    "y": 0.6000000238418579
+                }
+            },
+            "ID": 16579075270013670724,
+            "NativeScript": {
+                "className": "Enemy"
+            },
+            "Rigidbody2D": {
+                "fixedRotation": true,
+                "gravityScale": 1.0,
+                "type": 1
+            },
+            "SpriteRenderer": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "shape": 0,
+                "sprite": {
+                    "imageID": 11868734758166899774,
+                    "index": 0
+                }
+            },
+            "Transform": {
+                "position": [
+                    9.862616539001465,
+                    -0.022652089595794678,
+                    0.0
+                ],
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    2.0,
+                    2.0,
+                    2.0
+                ]
+            }
+        },
+        {
+            "Base": {
+                "name": "Player",
+                "tag": "Player"
+            },
+            "BoxCollider2D": {
+                "isTrigger": false,
+                "offset": {
+                    "x": 0.0,
+                    "y": 0.009999999776482582
+                },
+                "size": {
+                    "x": 0.17499999701976776,
+                    "y": 0.3400000035762787
+                }
+            },
+            "GroundDetection": {
+                "groundTag": "Platform"
+            },
+            "ID": 2503585634683617343,
+            "NativeScript": {
+                "className": "Player"
+            },
+            "Rigidbody2D": {
+                "fixedRotation": true,
+                "gravityScale": 3.5,
+                "type": 1
+            },
+            "SpriteAnimator": {
+                "controllerID": 18364765700134802392
+            },
+            "SpriteRenderer": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "shape": 0,
+                "sprite": {
+                    "imageID": 11244381477808532646,
+                    "index": 0
+                }
+            },
+            "Transform": {
+                "position": [
+                    1.046343445777893,
+                    0.3320755958557129,
                     0.0
                 ],
                 "rotation": [
@@ -111,7 +183,7 @@
                 "far": 1000.0,
                 "near": 0.0,
                 "projection": 1,
-                "size": 4.0,
+                "size": 3.799999952316284,
                 "targetID": 2503585634683617343
             },
             "ID": 4045176983250244255,
@@ -2343,7 +2415,7 @@
                 ],
                 "shape": 0,
                 "sprite": {
-                    "imageID": 11545032307504931157,
+                    "imageID": 18137972721365918085,
                     "index": 0
                 }
             },
@@ -2361,7 +2433,7 @@
                 "scale": [
                     0.0,
                     100.0,
-                    100.0
+                    1.0
                 ]
             }
         },
@@ -2399,14 +2471,126 @@
                 ],
                 "shape": 0,
                 "sprite": {
-                    "imageID": 12286608294873007786,
+                    "imageID": 11868734758166899774,
                     "index": 0
                 }
             },
             "Transform": {
                 "position": [
-                    6.0,
+                    4.884275436401367,
+                    -0.11436386406421661,
+                    0.0
+                ],
+                "rotation": [
                     0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    2.0,
+                    2.0,
+                    2.0
+                ]
+            }
+        },
+        {
+            "Base": {
+                "name": "Dummy Enemy",
+                "tag": "Enemy"
+            },
+            "BoxCollider2D": {
+                "isTrigger": false,
+                "offset": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "size": {
+                    "x": 0.800000011920929,
+                    "y": 0.6000000238418579
+                }
+            },
+            "ID": 1665183248394192656,
+            "NativeScript": {
+                "className": "Enemy"
+            },
+            "Rigidbody2D": {
+                "fixedRotation": true,
+                "gravityScale": 1.0,
+                "type": 1
+            },
+            "SpriteRenderer": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "shape": 0,
+                "sprite": {
+                    "imageID": 11868734758166899774,
+                    "index": 0
+                }
+            },
+            "Transform": {
+                "position": [
+                    7.461203098297119,
+                    -0.21911726891994476,
+                    0.0
+                ],
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scale": [
+                    2.0,
+                    2.0,
+                    2.0
+                ]
+            }
+        },
+        {
+            "Base": {
+                "name": "Dummy Enemy",
+                "tag": "Enemy"
+            },
+            "BoxCollider2D": {
+                "isTrigger": false,
+                "offset": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "size": {
+                    "x": 0.800000011920929,
+                    "y": 0.6000000238418579
+                }
+            },
+            "ID": 5285074782909178701,
+            "NativeScript": {
+                "className": "Enemy"
+            },
+            "Rigidbody2D": {
+                "fixedRotation": true,
+                "gravityScale": 1.0,
+                "type": 1
+            },
+            "SpriteRenderer": {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "shape": 0,
+                "sprite": {
+                    "imageID": 11868734758166899774,
+                    "index": 0
+                }
+            },
+            "Transform": {
+                "position": [
+                    22.15911293029785,
+                    5.328454971313477,
                     0.0
                 ],
                 "rotation": [

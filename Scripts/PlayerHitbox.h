@@ -6,7 +6,7 @@
 class PlayerHitbox : public ScriptableEntity
 {
 private:
-	float duration = 1.5f;
+	float duration = 0.25f;
 	float timer;
 
 public:

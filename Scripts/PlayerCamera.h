@@ -14,28 +14,24 @@
 
 class PlayerCamera : public ScriptableEntity
 {
-private:
-	TransformComponent* m_transform = nullptr;
-	CameraComponent* m_camera = nullptr;
-
 public:
 	EXPORT_CLASS(PlayerCamera)
 	
 	virtual void Start() override
 	{
 		std::cout << "PlayerCamera Start()\n";
-
-		m_transform = GetComponent<TransformComponent>();
-		m_camera = GetComponent<CameraComponent>();
 	}
 
 	virtual void LateUpdate(float dt) override
 	{
-		if (m_camera->targetEntity.IsValid())
+		auto& transform = Get<TransformComponent>();
+		auto& camera = Get<CameraComponent>();
+
+		if (camera.targetEntity.IsValid())
 		{
-			TransformComponent* targetTransform = m_camera->targetEntity.GetComponent<TransformComponent>();
-			m_transform->position.x = targetTransform->position.x;
-			m_transform->position.y = targetTransform->position.y;
+			auto& targetTransform = camera.targetEntity.Get<TransformComponent>();
+			transform.position.x = targetTransform.position.x;
+			transform.position.y = targetTransform.position.y;
 		}
 	}
 };

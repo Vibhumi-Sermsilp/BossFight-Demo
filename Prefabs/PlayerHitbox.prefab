@@ -14,19 +14,19 @@
             "y": 0.699999988079071
         }
     },
-    "ID": 17469973646702304429,
+    "ID": 346700164526775948,
     "NativeScript": {
         "className": "PlayerHitbox"
     },
     "Rigidbody2D": {
         "fixedRotation": false,
         "gravityScale": 0.0,
-        "type": 0
+        "type": 1
     },
     "Transform": {
         "position": [
-            0.0,
-            0.0,
+            1.1720473766326904,
+            1.9530576467514038,
             0.0
         ],
         "rotation": [

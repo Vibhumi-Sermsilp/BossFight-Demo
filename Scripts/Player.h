@@ -63,6 +63,14 @@ public:
 
 	virtual void Update(float dt) override
 	{
+		// Because components' pointers may be changed at runtime.
+		// Need to get them every frame.
+		m_rigidbody2d = GetComponent<Rigidbody2DComponent>();
+		m_transform = GetComponent<TransformComponent>();
+		m_groundDetection = GetComponent<GroundDetectionComponent>();
+		m_animator = GetComponent<SpriteAnimatorComponent>();
+		m_audioSource = GetComponent<AudioSourceComponent>();
+
 		/*--Handle Ground Check--*/
 		bool wasGrounded = isGrounded;
 		isGrounded = false;
@@ -90,19 +98,25 @@ public:
 			std::cout << "Jump Bonus Left: " << currentBonusJump;
 		}
 
-		if (m_app->GetInput().GetKeyDown(Key::X) && hitboxPrefab.IsValid())
+		Move(horizontal * moveSpeed, jump);
+		jump = false;
+
+		if (m_app->GetInput().GetMouseButtonDown(Mouse::ButtonLeft) && hitboxPrefab.IsValid())
 		{
 			int direction = m_transform->scale.x > 0 ? 1 : -1;
-			glm::vec3 offset = { direction * 1.0f, 0.0f, 0.0f };
+			glm::vec3 offset = { direction * 0.25f, 0.0f, 0.0f };
 			m_scene->InstantiateEntity(hitboxPrefab, m_transform->position + offset);
+
+			m_animator->controller->SetTrigger("attack");
 		}
-		/*----------------------*/
+
+		m_animator->controller->SetBool("running", horizontal != 0 && isGrounded);
 	}
 
 	virtual void LateUpdate(float dt) override
 	{
-		Move(horizontal * moveSpeed, jump);
-		jump = false;
+		//Move(horizontal * moveSpeed, jump);
+		//jump = false;
 	}
 
 	void Move(float move, bool jump)
