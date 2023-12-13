@@ -1,13 +1,12 @@
 #pragma once
 
 #include <iostream>
-#include "Scene/ScriptableEntity.h"
+#include "Entity/ScriptableEntity.h"
 #include "Scene/Scene.h"
 #include "Input/Input.h"
 #include "Audio/Audio.h"
 #include "Core/Application.h"
 #include "Asset/AssetManager.h"
-#include "Asset/AudioAsset.h"
 #include "Components/TransformComponent.h"
 #include "Components/SpriteRendererComponent.h"
 #include "Components/Rigidbody2DComponent.h"
@@ -47,6 +46,8 @@ private:
 
 public:
 	EXPORT_CLASS(Player)
+
+	int health = 3;
 
 	virtual void Start() override
 	{

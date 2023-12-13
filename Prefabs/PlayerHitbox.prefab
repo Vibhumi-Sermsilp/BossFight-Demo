@@ -1,7 +1,7 @@
 {
     "Base": {
         "name": "PlayerHitbox",
-        "tag": "PlayerHitbox"
+        "tag": "Untagged"
     },
     "BoxCollider2D": {
         "isTrigger": true,
@@ -10,23 +10,23 @@
             "y": 0.0
         },
         "size": {
-            "x": 0.699999988079071,
-            "y": 0.699999988079071
+            "x": 0.5,
+            "y": 0.5
         }
     },
-    "ID": 346700164526775948,
-    "NativeScript": {
-        "className": "PlayerHitbox"
-    },
+    "ID": 263890609734501450,
     "Rigidbody2D": {
         "fixedRotation": false,
         "gravityScale": 0.0,
         "type": 1
     },
+    "NativeScript": {
+        "className": "PlayerHitbox"
+    },
     "Transform": {
         "position": [
-            1.1720473766326904,
-            1.9530576467514038,
+            4.018182277679443,
+            -0.3636362552642822,
             0.0
         ],
         "rotation": [

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include "Scene/ScriptableEntity.h"
+#include "Entity/ScriptableEntity.h"
 #include "Scene/Scene.h"
 #include "Input/Input.h"
 #include "Components/TransformComponent.h"
@@ -10,7 +10,7 @@
 #include "Components/SpriteAnimatorComponent.h"
 #include "Components/GroundDetectionComponent.h"
 #include "Components/CameraComponent.h"
-#include "Core/Entity.h"
+#include "Entity/Entity.h"
 
 class PlayerCamera : public ScriptableEntity
 {

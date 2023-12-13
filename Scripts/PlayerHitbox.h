@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include "Scene/ScriptableEntity.h"
+#include "Entity/ScriptableEntity.h"
 
 class PlayerHitbox : public ScriptableEntity
 {
@@ -27,15 +27,5 @@ public:
 		}
 
 		timer += deltaTime;
-	}
-
-	virtual void OnCollisionEnter(Collision2D collision)
-	{
-		std::cout << "PlayerHitbox OnCollisionEnter: " << collision.name << std::endl;
-	}
-
-	virtual void OnCollisionExit(Collision2D collision)
-	{
-		std::cout << "PlayerHitbox OnCollisionExit: " << collision.name << std::endl;
 	}
 };

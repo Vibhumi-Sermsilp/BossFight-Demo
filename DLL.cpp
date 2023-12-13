@@ -6,12 +6,16 @@
 #include "Scripts/Enemy.h"
 #include "Scripts/PlayerCamera.h"
 #include "Scripts/PlayerHitbox.h"
+#include "Scripts/HUD.h"
 
-extern "C" {
-    API_CLASS void RegisterClasses() {
+extern "C"
+{
+    API_CLASS void RegisterClasses()
+    {
         REGISTER_CLASS(Player)
         REGISTER_CLASS(PlayerCamera)
         REGISTER_CLASS(Enemy)
         REGISTER_CLASS(PlayerHitbox)
+        REGISTER_CLASS(HUD)
     }
 }

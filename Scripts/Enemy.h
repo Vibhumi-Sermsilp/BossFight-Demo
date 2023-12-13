@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include "Scene/ScriptableEntity.h"
+#include "Entity/ScriptableEntity.h"
 
 class Enemy : public ScriptableEntity
 {
